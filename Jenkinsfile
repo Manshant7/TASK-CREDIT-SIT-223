@@ -88,7 +88,7 @@ pipeline {
             emailext(
                 to: "${EMAIL_RECIPIENT}",
                 subject: "Pipeline Execution Result - ${currentBuild.fullDisplayName}",
-                body: "Pipeline finished with status ok: ${currentBuild.currentResult}\n\nCheck Jenkins logs for more details."
+                body: "Pipeline finished with status : ${currentBuild.currentResult}\n\nCheck Jenkins logs for more details."
             )
         }
     }
