@@ -8,7 +8,7 @@ pipeline {
     }
 
     triggers {
-        githubPush()  // Enables GitHub webhook trigger
+        githubPush()  
     }
 
     stages {
