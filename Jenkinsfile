@@ -8,14 +8,14 @@ pipeline {
     }
 
     triggers {
-        githubPush()  //commit1
+        githubPush()  
     }
 
     stages {
         stage('Clone Repository') {
             steps {
                 echo 'Cloning the repository...'
-                git branch: "${BRANCH}", url: "${GIT_REPO}" //commit2
+                git branch: "${BRANCH}", url: "${GIT_REPO}" 
             }
         }
 
