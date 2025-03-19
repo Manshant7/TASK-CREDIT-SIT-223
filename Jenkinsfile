@@ -32,7 +32,7 @@ pipeline {
             post {
                 always {
                     echo "Sending test results via email..."
-                    emailext(
+                    mail(
                         to: "${EMAIL_RECIPIENT}",
                         subject: "Test Stage Result - ${currentBuild.fullDisplayName}",
                         body: "Tests completed: ${currentBuild.currentResult}\n\nCheck Jenkins logs for details."
@@ -54,7 +54,7 @@ pipeline {
             post {
                 always {
                     echo "Sending security scan results via email..."
-                    emailext(
+                    mail(
                         to: "${EMAIL_RECIPIENT}",
                         subject: "Security Scan Result - ${currentBuild.fullDisplayName}",
                         body: "Security scan completed: ${currentBuild.currentResult}\n\nCheck Jenkins logs for details."
@@ -85,7 +85,7 @@ pipeline {
     post {
         always {
             echo "Pipeline execution completed. Sending final status email..."
-            emailext(
+            mail(
                 to: "${EMAIL_RECIPIENT}",
                 subject: "Pipeline Execution Result - ${currentBuild.fullDisplayName}",
                 body: "Pipeline finished with status : ${currentBuild.currentResult}\n\nCheck Jenkins logs for more details."
