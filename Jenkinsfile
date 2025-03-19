@@ -7,6 +7,10 @@ pipeline {
         BRANCH = 'main'
     }
 
+    triggers {
+        githubPush()  // Enables GitHub webhook trigger
+    }
+
     stages {
         stage('Clone Repository') {
             steps {
@@ -75,6 +79,17 @@ pipeline {
             steps {
                 echo 'Deploying to Production using Ansible/Terraform for infrastructure automation.'
             }
+        }
+    }
+
+    post {
+        always {
+            echo "Pipeline execution completed. Sending final status email..."
+            emailext(
+                to: "${EMAIL_RECIPIENT}",
+                subject: "Pipeline Execution Result - ${currentBuild.fullDisplayName}",
+                body: "Pipeline finished with status: ${currentBuild.currentResult}\n\nCheck Jenkins logs for more details."
+            )
         }
     }
 }
