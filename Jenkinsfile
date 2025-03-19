@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         EMAIL_RECIPIENT = "manshantdh.1@gmail.com"
-        GIT_REPO = ''
+        GIT_REPO = 'https://github.com/Manshant7/TASK-CREDIT-SIT-223.git'
         BRANCH = 'main'
     }
 
