@@ -27,14 +27,12 @@ pipeline {
             }
             post {
                 always {
-                    script {
-                        def logContent = currentBuild.rawBuild.getLog(100).join("\n")
-                        emailext(
-                            to: "${EMAIL_RECIPIENT}",
-                            subject: "Test Stage Result - ${currentBuild.fullDisplayName}",
-                            body: "Tests completed: ${currentBuild.currentResult}\n\nLogs:\n${logContent}"
-                        )
-                    }
+                    echo "Sending test results via email..."
+                    emailext(
+                        to: "${EMAIL_RECIPIENT}",
+                        subject: "Test Stage Result - ${currentBuild.fullDisplayName}",
+                        body: "Tests completed: ${currentBuild.currentResult}\n\nCheck Jenkins logs for details."
+                    )
                 }
             }
         }
@@ -51,14 +49,12 @@ pipeline {
             }
             post {
                 always {
-                    script {
-                        def logContent = currentBuild.rawBuild.getLog(100).join("\n")
-                        emailext(
-                            to: "${EMAIL_RECIPIENT}",
-                            subject: "Security Scan Result - ${currentBuild.fullDisplayName}",
-                            body: "Security scan completed: ${currentBuild.currentResult}\n\nLogs:\n${logContent}"
-                        )
-                    }
+                    echo "Sending security scan results via email..."
+                    emailext(
+                        to: "${EMAIL_RECIPIENT}",
+                        subject: "Security Scan Result - ${currentBuild.fullDisplayName}",
+                        body: "Security scan completed: ${currentBuild.currentResult}\n\nCheck Jenkins logs for details."
+                    )
                 }
             }
         }
