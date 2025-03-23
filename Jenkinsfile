@@ -14,20 +14,23 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                echo 'Cloning the repository...'
+                echo 'Task: Cloning the repository to fetch the latest codebase.'
+                echo 'Tool: Git'
                 git branch: "${BRANCH}", url: "${GIT_REPO}" 
-            }//m
+            }
         }
 
         stage('Build') {
             steps {
-                echo 'Building the application using a build automation tool like Maven/Gradle.'
+                echo 'Task: Compiling the source code and resolving dependencies.'
+                echo 'Tool: Maven or Gradle'
             }
         }
 
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Running tests using JUnit/TestNG for unit testing and Selenium/Cypress for integration testing.'
+                echo 'Task: Running unit and integration tests to validate code functionality.'
+                echo 'Tools: JUnit/TestNG for unit tests, Selenium/Cypress for integration tests'
             }
             post {
                 always {
@@ -43,13 +46,15 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                echo 'Performing code analysis using SonarQube or CodeClimate.'
+                echo 'Task: Performing static code analysis to ensure code quality and adherence to standards.'
+                echo 'Tool: SonarQube or CodeClimate'
             }
         }
 
         stage('Security Scan') {
             steps {
-                echo 'Running security scan using tools like OWASP Dependency-Check or Trivy.'
+                echo 'Task: Scanning for security vulnerabilities in dependencies and code.'
+                echo 'Tools: OWASP Dependency-Check, Trivy'
             }
             post {
                 always {
@@ -65,19 +70,22 @@ pipeline {
 
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying application to Staging using Docker/Kubernetes/AWS EC2.'
+                echo 'Task: Deploying the application to a staging environment for further testing.'
+                echo 'Tools: Docker, Kubernetes, AWS EC2'
             }
         }
 
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running integration tests using Selenium/Postman on staging environment.'
+                echo 'Task: Running end-to-end integration tests in the staging environment.'
+                echo 'Tools: Selenium, Postman'
             }
         }
 
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying to Production using Ansible/Terraform for infrastructure automation.'
+                echo 'Task: Deploying the application to the production environment.'
+                echo 'Tools: Ansible, Terraform'
             }
         }
     }
