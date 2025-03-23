@@ -9,7 +9,7 @@ pipeline {
 
     triggers {
         githubPush()  
-    }
+    }//commit message
 
     stages {
         stage('Clone Repository') {
