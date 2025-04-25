@@ -8,7 +8,7 @@ pipeline {
     }
 
     triggers {
-        githubPush()  //commit message
+        githubPush()  
     }
 
     stages {
